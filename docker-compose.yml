@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  parkinglot-app:
+    build:
+      context: . # The directory containing the Dockerfile
+      dockerfile: Dockerfile # Specify the Dockerfile name if it differs
+    ports:
+      - "8080:8080" # Maps port 8080 of the container to port 8080 on the host
+    container_name: parkinglot-container
+    restart: always
