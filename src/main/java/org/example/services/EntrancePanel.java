@@ -1,7 +1,7 @@
-package org.example;
+package org.example.services;
 
 public class EntrancePanel {
-    public ParkingTicket printTicket(Vechile vehicle) {
+    public ParkingTicket printTicket(Vehicle vehicle) {
         return ParkingLot.getInstance().getNewParkingTicket(vehicle);
     }
 }

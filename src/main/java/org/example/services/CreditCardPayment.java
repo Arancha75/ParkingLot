@@ -1,4 +1,7 @@
-package org.example;
+package org.example.services;
+
+import org.example.enums.PaymentStatus;
+import org.example.Interface.PaymentStrategy;
 
 import java.util.logging.*;
 

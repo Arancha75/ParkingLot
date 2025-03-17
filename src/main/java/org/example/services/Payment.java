@@ -1,4 +1,6 @@
-package org.example;
+package org.example.services;
+
+import org.example.enums.PaymentStatus;
 
 public class Payment {
     private  double amount;
@@ -9,7 +11,7 @@ public class Payment {
         this.status = PaymentStatus.PENDING;
     }
     public void markAsCompleted() {
-        this.status = PaymentStatus.COMPLETED;
+        this.status = PaymentStatus.SUCCESS;
     }
 
     public void markAsFailed() {

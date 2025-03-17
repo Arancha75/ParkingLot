@@ -1,14 +1,20 @@
-package org.example;
+package org.example.services;
+
+import org.example.Factory.ParkingSpotFactory;
+import org.example.enums.VehicleType;
+import org.example.Interface.ParkingSpot;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 public class ParkingLot {
     private static volatile ParkingLot instance;
     private final List<ParkingFloor> floors;
     private final List<EntrancePanel> entrancePanels;
     private final List<ExitPanel> exitPanels;
+
 
     private ParkingLot() {
         this.floors = new ArrayList<>();
@@ -46,22 +52,21 @@ public class ParkingLot {
         return true;
     }
 
-    public ParkingTicket getNewParkingTicket(Vechile vechile) {
+    public ParkingTicket getNewParkingTicket(Vehicle vehicle) {
+        System.out.println("Vehicle of type: " + vehicle.getType() + " has arrived at parking lot");
         if (isFull()) return null;
         for (ParkingFloor floor : floors) {
-            ParkingSpot spot = floor.getAvailableParkingSpot(vechile.getType());
+            ParkingSpot spot = floor.getAvailableParkingSpot(vehicle.getType());
             if (spot == null) {
-                ParkingSpot newSpot = null;
-                if (vechile.getType().equals(VechileType.BIKE)) {
-                    newSpot = new CompactSpot(new Random().toString());
-                } else {
-                    newSpot = new LargeSpot(new Random().toString());
-                }
-                newSpot.assignVechile(vechile);
-                return new ParkingTicket(vechile, newSpot);
+                ParkingSpot newSpot = ParkingSpotFactory.createParkingSpot(vehicle.getType(), UUID.randomUUID().toString());
+                newSpot.assignVehicle(vehicle);
+                return new ParkingTicket(vehicle, newSpot);
             }
         }
         return null;
     }
 
+    public boolean processTicket(String ticketNumber) {
+        return false;
+    }
 }
