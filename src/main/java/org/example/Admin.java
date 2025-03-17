@@ -6,6 +6,7 @@ public class Admin extends Account{
     }
 
     public boolean addParkingFloor(ParkingFloor floor){
-        System.out.println("Adding new Parking floor" + floor.);
+        System.out.println("Adding new Parking floor" + floor);
+        return true;
     }
 }

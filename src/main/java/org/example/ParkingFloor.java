@@ -27,9 +27,9 @@ public class ParkingFloor {
     }
 
 
-
     public ParkingSpot getAvailableParkingSpot(VechileType type) {
         for (ParkingSpot spot : spots) {
+            //TODO : put this logic into separate method
             if (!spot.isOccupied() && spot.getType().equals(type)) {
                 return spot;
             }
@@ -38,14 +38,11 @@ public class ParkingFloor {
     }
 
 
-    public void addParkingSpot(ParkingSpot spot){
+    public void addParkingSpot(ParkingSpot spot) {
         spots.add(spot);
-
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return spots.stream().allMatch(org.example.ParkingSpot::isOccupied);
     }
-
-
 }

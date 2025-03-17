@@ -15,6 +15,7 @@ public abstract class Account {
 
     public boolean resetPassword(){
         System.out.println("Password request sent to" + Username);
+        return true;
     }
 
     public String getUsername() {
